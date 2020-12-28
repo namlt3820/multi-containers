@@ -3,18 +3,18 @@ sudo: required
 services:
   - docker
 before_install:
-  - docker build -t namlt/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t namlt3820/react-test -f ./client/Dockerfile.dev ./client
 script:
-  - docker run -e CI=true namlt/react-test npm test
+  - docker run -e CI=true namlt3820/react-test npm test
 after_success:
-  - docker build -t namlt/multi-client ./client
-  - docker build -t namlt/multi-nginx ./nginx
-  - docker build -t namlt/multi-server ./server
-  - docker build -t namlt/multi-worker ./worker
+  - docker build -t namlt3820/multi-client ./client
+  - docker build -t namlt3820/multi-nginx ./nginx
+  - docker build -t namlt3820/multi-server ./server
+  - docker build -t namlt3820/multi-worker ./worker
 
   -  echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin docker.io
 
-  - docker push namlt/multi-client:latest
-  - docker push namlt/multi-nginx:latest
-  - docker push namlt/multi-server:latest
-  - docker push namlt/multi-worker:latest
+  - docker push namlt3820/multi-client:latest
+  - docker push namlt3820/multi-nginx:latest
+  - docker push namlt3820/multi-server:latest
+  - docker push namlt3820/multi-worker:latest
